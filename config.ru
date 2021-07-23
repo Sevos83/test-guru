@@ -1,6 +1,9 @@
-# This file is used by Rack-based servers to start the application.
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #
+  root to: 'tests#index'
 
-require_relative "config/environment"
-
-run Rails.application
-Rails.application.load_server
+  resources :tests do
+    resources :questions
+  end
+end
