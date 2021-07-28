@@ -1,0 +1,20 @@
+<h1>Информация о вопросах</h1>
+<p>
+<ul>
+  <li>
+    <strong>Содержание вопроса:</strong>
+    <%= @question.content %>
+  </li>
+  <li>
+    <strong>Дата создания:</strong>
+    <%= @question.created_at %>
+  </li>
+  <li>
+    This question belongs to '<%= @question.test.title %>' test
+  </li>
+</ul>
+</p>
+
+<p>
+<%= link_to 'Отредактируйте этот вопрос', edit_question_path(@question) %> | <%= link_to 'Назад', test_path(@question.test) %>
+</p>
