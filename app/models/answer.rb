@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
-  validates :answer, presence: true
-  validate :validate_answers_max_length, on: :create
+  validates :body, presence: true
+  validate :validate_numbers_of_answers, on: :create
 
   belongs_to :question
 
@@ -8,9 +8,8 @@ class Answer < ApplicationRecord
 
   private
 
-  def validate_answers_max_length
-    if question.answers.count >= 4
-     errors.add(:question, 'У одного Вопроса может быть от 1-го до 4-х ответов')
-    end
+  def validate_numbers_of_answers
+    message = 'Кол-во ответов может быть не больше 4-х'
+    errors.add(:question, message) if question.answers.count >= 4
   end
 end

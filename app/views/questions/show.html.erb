@@ -1,20 +1,15 @@
-<h1>Информация о вопросах</h1>
-<p>
-<ul>
-  <li>
-    <strong>Содержание вопроса:</strong>
-    <%= @question.content %>
-  </li>
-  <li>
-    <strong>Дата создания:</strong>
-    <%= @question.created_at %>
-  </li>
-  <li>
-    This question belongs to '<%= @question.test.title %>' test
-  </li>
-</ul>
-</p>
+<h1><%= @question.test.title %> Question</h1>
 
 <p>
-<%= link_to 'Отредактируйте этот вопрос', edit_question_path(@question) %> | <%= link_to 'Назад', test_path(@question.test) %>
+  <strong>Question:</strong>
+  <%= @question.body %>
 </p>
+
+<h2>Answers</h2>
+<%= link_to 'Новый ответ', new_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to 'Назад', @question.test %>
