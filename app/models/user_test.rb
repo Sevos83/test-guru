@@ -36,7 +36,7 @@ class UserTest < ApplicationRecord
   def before_validation_set_current_question
     self.current_question =
       if current_question.nil?
-        test.questions.first
+        test.questions.first if test.present?
       else
         test.questions.order(:id).where('id > ?', current_question.id).first
       end
