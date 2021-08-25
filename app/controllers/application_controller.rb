@@ -2,13 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user,
-                :logged_in
+                :logged_in?
 
   private
 
   def authenticate_user!
     unless current_user
-      redirect_to login_path, alert: 'Are you a Guru? Verify your Email and Password please'
+      cookies[:path] = request.fullpath
+      redirect_to login_path, alert: 'Авторизуйтесь для доступа к TestGuru'
     end
   end
 

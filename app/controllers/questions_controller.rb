@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :find_test, only: %i[create new index]
   before_action :find_question, only: %i[edit show update destroy]
 
@@ -12,7 +14,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to @question.test
+      redirect_to @question
     else
       render :new
     end
