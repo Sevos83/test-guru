@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :authenticate_user!
+
   helper_method :current_user,
                 :logged_in?
 
@@ -8,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      cookies[:path] = request.fullpath
+      cookies[:original_path] = request.fullpath
       redirect_to login_path, alert: 'Авторизуйтесь для доступа к TestGuru'
     end
   end

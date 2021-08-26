@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to cookies.delete(:path) || root_path
+      redirect_to cookies.delete(:original_path) || root_path
     else
       flash.now[:alert] = 'Введите почту и пароль!'
       render :new

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'sessions/new'
+
   root 'tests#index'
 
   get :login, to: 'sessions#new'
@@ -11,8 +10,8 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
 
   resources :tests do
-    resources :questions, shallow: true, expect: :index do
-      resources :answers, shallow: true, expect: :index
+    resources :questions, shallow: true, except: :index do
+      resources :answers, shallow: true, except: :index
     end
     member do
       post :start
