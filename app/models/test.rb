@@ -3,10 +3,11 @@ class Test < ApplicationRecord
   validates :level, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :questions
-  has_many :completed_tests
+  has_many :user_tests
   has_many :users, through: :completed_tests
-  belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: :author_id
+
+  belongs_to :author, class_name: :User, foreign_key: :author_id, optional: true
+  belongs_to :category, optional: true
 
   scope :easy, -> { where(level: 0..1) }
   scope :medium, -> { where(level: 2..4) }
