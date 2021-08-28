@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_125635) do
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
   end
 
-  create_table "user_tests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "test_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["test_id"], name: "index_user_tests_on_test_id"
-    t.index ["user_id"], name: "index_user_tests_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
