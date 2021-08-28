@@ -28,7 +28,7 @@ questions = Question.create([
 { question: 'Название вещества состоящего из атомов одного вида', test_id: tests[5].id }
 ])
 
-Answer.create([
+answers = Answer.create([
 { answer: '20 минут', question_id: questions[0].id, correct: false },
 { answer: '15 минут', question_id: questions[0].id, correct: true },
 { answer: 'Владимир Маяковский', question_id: questions[1].id, correct: false },
@@ -43,7 +43,7 @@ Answer.create([
 { answer: 'Простые', question_id: questions[5].id, correct: true }
 ])
 
-UserTest.create([
+test_passages = TestPassage.create([
 { user_id: users[0].id, test_id: tests[0].id },
 { user_id: users[0].id, test_id: tests[1].id },
 { user_id: users[0].id, test_id: tests[3].id },

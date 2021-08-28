@@ -1,4 +1,4 @@
-class UserTest < ApplicationRecord
+class TestPassage < ApplicationRecord
   PASS_TEST_PERCENT = 85
 
   belongs_to :user
